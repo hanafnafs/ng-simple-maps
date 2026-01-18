@@ -1,11 +1,24 @@
 # ng-simple-maps
 
 [![npm version](https://badge.fury.io/js/ng-simple-maps.svg)](https://badge.fury.io/js/ng-simple-maps)
+[![Build Status](https://github.com/hanafnafs/ng-simple-maps/actions/workflows/deploy.yml/badge.svg)](https://github.com/hanafnafs/ng-simple-maps/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Angular](https://img.shields.io/badge/Angular-21+-red.svg)](https://angular.io/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9+-blue.svg)](https://www.typescriptlang.org/)
+[![Angular](https://img.shields.io/badge/Angular-15%2B-red.svg)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 
 **Beautiful, lightweight SVG world maps for Angular applications.** Create stunning interactive choropleth maps, data visualizations, geographic dashboards, and analytics with D3 geo projections. Perfect for business intelligence, travel apps, educational tools, and corporate websites.
+
+!(https://raw.githubusercontent.com/hanafnafs/ng-simple-maps/main/assets/preview.png)
+
+## 🚀 Live Demo & Documentation
+
+**[View Interactive Demo →](https://hanafnafs.github.io/ng-simple-maps/)**
+
+## Angular Version Support
+
+This library supports **Angular 15+**.
+
+> **Peer Dependencies:** `@angular/core@>=15.0.0` and `@angular/common@>=15.0.0`
 
 🗺️ **World Map Library** | 📊 **Data Visualization** | 🌍 **Geographic Mapping** | 📱 **Responsive Design** | ⚡ **Interactive Maps**
 
