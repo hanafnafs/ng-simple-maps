@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:lib": "ng build ng-simple-maps",
+    "build:app": "ng build angular-simple-maps",
+    "build:all": "npm run build:lib && npm run build:app",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
