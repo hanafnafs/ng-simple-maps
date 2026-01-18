@@ -1,6 +1,6 @@
 {
   "name": "ng-simple-maps",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beautiful, lightweight SVG world maps for Angular applications. Create interactive choropleth maps, markers, lines, and more with D3 geo projections. Perfect for data visualization, analytics dashboards, and geographic applications.",
   "keywords": [
     "angular",
@@ -52,7 +52,7 @@
     "url": "https://github.com/hanafnafs"
   },
   "license": "MIT",
-  "homepage": "https://ng-simple-maps.dev",
+  "homepage": "https://github.com/hanafnafs/ng-simple-maps",
   "repository": {
     "type": "git",
     "url": "https://github.com/hanafnafs/ng-simple-maps.git"

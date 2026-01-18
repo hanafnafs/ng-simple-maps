@@ -1,6 +1,6 @@
 # ng-simple-maps
 
-[![npm version](https://badge.fury.io/js/ng-simple-maps.svg)](https://badge.fury.io/js/ng-simple-maps)
+[![npm version](https://badge.fury.io/js/ng-simple-maps.svg)](https://badge.fury.io/js/ng-simple-maps.svg)
 [![Build Status](https://github.com/hanafnafs/ng-simple-maps/actions/workflows/deploy.yml/badge.svg)](https://github.com/hanafnafs/ng-simple-maps/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Angular](https://img.shields.io/badge/Angular-15%2B-red.svg)](https://angular.io/)
