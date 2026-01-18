@@ -1,0 +1,26 @@
+<section [id]="id" class="feature-section">
+    <div class="feature-header">
+      <h2>{{ title }}</h2>
+      <p class="feature-description">{{ description }}</p>
+    </div>
+
+    <div class="feature-content">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="feature-highlights" *ngIf="highlights && highlights.length > 0">
+      <div class="highlight-grid">
+        <div 
+          *ngFor="let highlight of highlights" 
+          class="highlight-item">
+          <h4>{{ highlight.title }}</h4>
+          <p>{{ highlight.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-section" *ngIf="codeExample">
+      <h3>Code Example</h3>
+      <pre class="code-block"><code>{{ codeExample }}</code></pre>
+    </div>
+  </section>

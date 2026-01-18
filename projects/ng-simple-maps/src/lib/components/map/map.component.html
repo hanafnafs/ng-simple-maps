@@ -1,0 +1,36 @@
+<div class="asm-map-container" [style.max-width]="maxWidth() ? maxWidth() + 'px' : '100%'">
+  <svg
+    #svgElement
+    [attr.viewBox]="viewBox()"
+    class="asm-map-svg"
+    (mousemove)="onMouseMove($event)">
+    <g #zoomGroup class="asm-map-content">
+      <!-- Geographies will be rendered here -->
+    </g>
+  </svg>
+
+  <!-- Zoom Controls -->
+  @if (zoomable() && showZoomControls()) {
+    <div class="asm-map-zoom-controls">
+      <button class="asm-map-zoom-btn" (click)="zoomIn()" title="Zoom in">+</button>
+      <button class="asm-map-zoom-btn" (click)="zoomOut()" title="Zoom out">-</button>
+      <button class="asm-map-zoom-btn" (click)="resetZoom()" title="Reset">&#8634;</button>
+    </div>
+  }
+
+  <!-- Tooltip -->
+  @if (showTooltip() && tooltipVisible()) {
+    <div
+      class="asm-map-tooltip"
+      [style.left]="tooltipX() + 'px'"
+      [style.top]="tooltipY() + 'px'"
+      [style.background-color]="tooltipConfig()?.backgroundColor || '#fff'"
+      [style.color]="tooltipConfig()?.textColor || '#333'"
+      [style.border-color]="tooltipConfig()?.borderColor || '#ccc'"
+      [style.border-radius]="(tooltipConfig()?.borderRadius || 4) + 'px'">
+      <div class="asm-map-tooltip-title" [style.color]="tooltipConfig()?.titleColor">
+        {{ tooltipContent() }}
+      </div>
+    </div>
+  }
+</div>

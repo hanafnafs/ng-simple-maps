@@ -1,0 +1,279 @@
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md border-b border-gray-200 z-50">
+  <div class="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
+    <div>
+      <h1 class="text-xl font-semibold text-gray-800">ng-simple-maps</h1>
+    </div>
+    <div class="flex gap-8 items-center">
+      <a href="#examples"
+        class="text-gray-600 no-underline font-medium text-sm hover:text-gray-800 transition-colors duration-200">Examples</a>
+      <a routerLink="/docs"
+        class="text-gray-600 no-underline font-medium text-sm hover:text-gray-800 transition-colors duration-200">Documentation</a>
+      <a href="https://github.com/hanafnafs/ng-simple-maps" target="_blank"
+        class="text-gray-600 no-underline font-medium text-sm hover:text-gray-800 transition-colors duration-200">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-24 pb-10 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-5">
+    <!-- Hero Text -->
+    <div class="text-center">
+      <h1 class="text-5xl font-bold text-gray-800 mb-5 leading-tight">Create beautiful SVG maps in Angular</h1>
+      <p class="text-xl text-gray-600 mb-10 leading-relaxed">
+        Simple, lightweight and easily customizable map library built with D3 geo and topojson
+      </p>
+      <div class="relative">
+        <div class="absolute inset-0  rounded-2xl"></div>
+            <asm-map
+              [geography]="worldData"
+              [width]="1000"
+              [height]="500"
+              [maxWidth]="null"
+              projection="geoEqualEarth"
+              [zoomable]="true"
+              [showTooltip]="true"
+              [zoomOnClick]="true"
+              fill="#1e293b"
+              stroke="#334155"
+              [strokeWidth]="0.3"
+              hoverFill="#475569"
+              [showZoomControls]="true"
+              class="w-full h-auto"
+              (markerClick)="onMarkerClick($event)">
+            </asm-map>
+        </div>
+      <div class="max-w-md mx-auto">
+        <p class="text-xl text-gray-600 mt-10 leading-relaxed">
+          Install it and it's ready to use!
+        </p>
+        <app-code-example [code]="installCommand" [showTitle]="false"> </app-code-example>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Examples Section -->
+<section id="examples" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <h2 class="text-4xl font-bold text-gray-800 text-center mb-16">Examples</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      <!-- Basic World Map -->
+      <div
+        class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
+        <div class="bg-gray-50 p-5 border-b border-gray-200">
+          <asm-map [geography]="worldData" [width]="400" [height]="200" projection="geoEqualEarth" fill="#f8f9fa"
+            stroke="#dee2e6" [strokeWidth]="0.5" class="block w-full h-auto rounded">
+          </asm-map>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Basic World Map</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">A simple world map with country borders and custom styling.
+          </p>
+        </div>
+      </div>
+
+      <!-- Markers Example -->
+      <div
+        class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
+        <div class="bg-gray-50 p-5 border-b border-gray-200">
+          <asm-map [geography]="worldData" [markers]="exampleMarkers" [width]="400" [height]="200"
+            projection="geoEqualEarth" fill="#f8f9fa" stroke="#dee2e6" [strokeWidth]="0.5" markerColor="#dc3545"
+            [showTooltip]="true" class="block w-full h-auto rounded">
+          </asm-map>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Basic Markers</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Add interactive markers to highlight cities and points of
+            interest.</p>
+        </div>
+      </div>
+
+      <!-- Choropleth Example -->
+      <div
+        class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
+        <div class="bg-gray-50 p-5 border-b border-gray-200">
+          <asm-map [geography]="worldData" [choroplethData]="populationData" [choroplethConfig]="choroplethConfig"
+            [width]="400" [height]="200" projection="geoEqualEarth" stroke="#ffffff" [strokeWidth]="0.5"
+            class="block w-full h-auto rounded">
+          </asm-map>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Choropleth Maps</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Visualize data by coloring countries based on values.</p>
+        </div>
+      </div>
+
+      <!-- Interactive Example -->
+      <div
+        class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
+        <div class="bg-gray-50 p-5 border-b border-gray-200">
+          <asm-map [geography]="worldData" [width]="400" [height]="200" projection="geoEqualEarth" fill="#e9ecef"
+            stroke="#adb5bd" hoverFill="#6c757d" [strokeWidth]="0.5" [zoomable]="true" [showTooltip]="true"
+            class="block w-full h-auto rounded">
+          </asm-map>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Interactive Map</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Enable zoom, pan and hover interactions for better user
+            experience.</p>
+        </div>
+      </div>
+
+      <!-- Globe Example -->
+      <div
+        class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
+        <div class="bg-gray-50 p-5 border-b border-gray-200">
+          <asm-map [geography]="worldData" [width]="400" [height]="200" projection="geoOrthographic" fill="#e3f2fd"
+            stroke="#1976d2" [strokeWidth]="0.5" [showGraticule]="true" [graticuleConfig]="graticuleConfig"
+            class="block w-full h-auto rounded">
+          </asm-map>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Globe View</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Display maps using different projections like orthographic
+            (globe view).</p>
+        </div>
+      </div>
+
+      <!-- Lines Example -->
+      <div
+        class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
+        <div class="bg-gray-50 p-5 border-b border-gray-200">
+          <asm-map [geography]="worldData" [markers]="connectionMarkers" [lines]="connectionLines" [width]="400"
+            [height]="200" projection="geoEqualEarth" fill="#f8f9fa" stroke="#dee2e6" [strokeWidth]="0.5"
+            markerColor="#007bff" class="block w-full h-auto rounded">
+          </asm-map>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Lines & Connections</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Draw curved lines to show relationships and flight paths
+            between locations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="text-center">
+        <div class="text-4xl mb-4 block">⚡</div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Lightweight</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Small bundle size with no unnecessary dependencies</p>
+      </div>
+
+      <div class="text-center">
+        <div class="text-4xl mb-4 block">🎨</div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Customizable</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Easy to style and customize for your specific needs</p>
+      </div>
+
+      <div class="text-center">
+        <div class="text-4xl mb-4 block">📱</div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Responsive</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Works perfectly on desktop, tablet, and mobile devices</p>
+      </div>
+
+      <div class="text-center">
+        <div class="text-4xl mb-4 block">⚙️</div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Simple API</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Intuitive component-based API that's easy to learn</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Start -->
+<section id="quickstart" class="py-20 bg-white">
+  <div class="max-w-5xl mx-auto px-5">
+    <h2 class="text-4xl font-bold text-gray-800 text-center mb-16">Quick Start</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">1. Install</h3>
+        <app-code-example [code]="installCommand"></app-code-example>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">2. Import</h3>
+        <app-code-example [code]="importCode"></app-code-example>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">3. Use</h3>
+        <app-code-example [code]="basicUsageCode"></app-code-example>
+      </div>
+    </div>
+
+    <div class="text-center mt-10 p-8 bg-gray-50 rounded-lg border border-gray-200">
+      <!-- <p class="mb-4 text-gray-600 text-base">Need more details?</p> -->
+      <a routerLink="/docs"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold no-underline border bg-slate-800 bg-slate-800 text-white hover:bg-slate-800 hover:bg-slate-800 transition-all duration-200 leading-none">View
+        Full Documentation →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contributors Needed -->
+<section class="py-20 bg-gray-50 border-t border-gray-100">
+  <div class="max-w-4xl mx-auto px-5 text-center">
+    <div class="mb-8">
+      <h2 class="text-4xl font-bold text-gray-800 mb-6">🤝 Maintainers Needed</h2>
+      <p class="text-xl text-gray-700 leading-relaxed mb-8">
+        We're actively seeking dedicated contributors to help maintain and improve ng-simple-maps!
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://github.com/hanafnafs/ng-simple-maps" target="_blank"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-lg font-semibold no-underline hover:bg-gray-900 transition-colors duration-200">
+        ⭐ Star on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-800 text-slate-100 pt-16 pb-5">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-10">
+      <div>
+        <h3 class="text-2xl font-semibold mb-4 text-white">ng-simple-maps</h3>
+        <p class="text-slate-300 leading-relaxed">Beautiful SVG maps for Angular</p>
+      </div>
+      <div class="md:col-span-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div>
+            <h4 class="text-base font-semibold mb-3 text-white">Resources</h4>
+            <div class="space-y-2">
+              <a href="#examples"
+                class="block text-slate-300 no-underline text-sm mb-2 hover:text-blue-400 transition-colors duration-200">Examples</a>
+              <a routerLink="/docs"
+                class="block text-slate-300 no-underline text-sm mb-2 hover:text-blue-400 transition-colors duration-200">Documentation</a>
+              <a href="https://github.com/hanafnafs/ng-simple-maps"
+                class="block text-slate-300 no-underline text-sm mb-2 hover:text-blue-400 transition-colors duration-200">GitHub</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-base font-semibold mb-3 text-white">Data Sources</h4>
+            <div class="space-y-2">
+              <a href="https://github.com/topojson/world-atlas"
+                class="block text-slate-300 no-underline text-sm mb-2 hover:text-blue-400 transition-colors duration-200">World
+                Atlas</a>
+              <a href="https://www.naturalearthdata.com/"
+                class="block text-slate-300 no-underline text-sm mb-2 hover:text-blue-400 transition-colors duration-200">Natural
+                Earth</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-slate-700 pt-5 text-center">
+      <p class="text-slate-400 text-sm">&copy;2026 ng-simple-maps</p>
+    </div>
+  </div>
+</footer>

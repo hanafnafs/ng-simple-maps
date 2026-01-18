@@ -1,0 +1,17 @@
+/* Base reset handled by Tailwind */
+::ng-deep * {
+  margin: 0;
+  padding: 0;
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  @apply outline-2 outline-blue-500 outline-offset-2;
+}
+
+/* Smooth scrolling */
+html {
+  @apply scroll-smooth;
+  scroll-padding-top: 80px;
+}

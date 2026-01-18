@@ -1,0 +1,74 @@
+<!-- Burger Menu Button (Mobile Only) -->
+<button 
+  class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 transition-colors duration-200"
+  (click)="toggleMenu()"
+  [attr.aria-expanded]="isMenuOpen"
+  aria-label="Toggle navigation menu">
+  <div class="w-5 h-5 flex flex-col justify-center space-y-1">
+    <span class="block w-full h-0.5 bg-gray-700 transition-all duration-200" [class.rotate-45]="isMenuOpen" [class.translate-y-1.5]="isMenuOpen"></span>
+    <span class="block w-full h-0.5 bg-gray-700 transition-all duration-200" [class.opacity-0]="isMenuOpen"></span>
+    <span class="block w-full h-0.5 bg-gray-700 transition-all duration-200" [class.-rotate-45]="isMenuOpen" [class.-translate-y-1.5]="isMenuOpen"></span>
+  </div>
+</button>
+
+<!-- Overlay (Mobile Only) -->
+<div 
+  class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-200"
+  [class]="isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
+  (click)="closeMenu()">
+</div>
+
+<!-- Side Menu -->
+<aside 
+  class="fixed top-0 left-0 w-80 h-full bg-white border-r border-gray-200 z-50 transform transition-transform duration-300 overflow-y-auto lg:translate-x-0"
+  [class]="isMenuOpen || !isMobile ? 'translate-x-0' : '-translate-x-full'">
+  
+  <!-- Menu Header -->
+  <div class="flex items-center justify-between p-4 border-b border-gray-200">
+    <h2 class="text-lg font-semibold text-gray-900">Navigation</h2>
+    <button 
+      class="p-1 rounded-md hover:bg-gray-100 transition-colors duration-200"
+      (click)="closeMenu()"
+      aria-label="Close menu">
+      <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Menu Content -->
+  <div class="py-6">
+    <div class="mb-8 px-5">
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">Features</h3>
+      <nav class="flex flex-col gap-1">
+        <a 
+          *ngFor="let item of features" 
+          [href]="'/docs/'+'#' + item.id" 
+          class="text-gray-700 no-underline text-sm font-medium px-3 py-2 rounded-md transition-all duration-200 block hover:bg-gray-100 hover:text-gray-900"
+          (click)="closeMenu()">
+          {{ item.label }}
+        </a>
+      </nav>
+    </div>
+
+    <div class="mb-8 px-5">
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">Quick Start</h3>
+      <div class="bg-gray-50 border border-gray-200 rounded-md p-3">
+        <code class="font-mono text-sm text-gray-700">npm install ng-simple-maps</code>
+      </div>
+    </div>
+
+    <div class="mb-8 px-5">
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">Resources</h3>
+      <nav class="flex flex-col gap-1">
+        <a 
+          *ngFor="let item of resources" 
+          [href]="'#' + item.id" 
+          class="text-gray-700 no-underline text-sm font-medium px-3 py-2 rounded-md transition-all duration-200 block hover:bg-gray-100 hover:text-gray-900"
+          (click)="closeMenu()">
+          {{ item.label }}
+        </a>
+      </nav>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,69 @@
+<header class="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50 h-16">
+  <div class="max-w-6xl mx-auto px-5 flex items-center justify-between h-full">
+    <div class="flex items-center gap-4">
+      <button 
+        class="md:hidden flex flex-col justify-center w-8 h-8 border-0 bg-transparent cursor-pointer p-1"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-label="Toggle navigation">
+        <span class="relative block w-5 h-0.5 bg-gray-700 transition-all duration-200 before:content-[''] before:absolute before:w-5 before:h-0.5 before:bg-gray-700 before:-top-1.5 before:transition-all before:duration-200 after:content-[''] after:absolute after:w-5 after:h-0.5 after:bg-gray-700 after:top-1.5 after:transition-all after:duration-200"></span>
+      </button>
+      <div>
+        <h1 class="text-xl font-bold text-gray-900 m-0 leading-none">ng-simple-maps</h1>
+        <p class="text-xs text-gray-500 m-0 leading-tight">Interactive SVG maps for Angular</p>
+      </div>
+    </div>
+    
+    <nav class="hidden md:flex gap-8">
+      <a href="#features" class="text-gray-700 no-underline font-medium text-sm py-2 border-b-2 border-transparent hover:text-gray-900 hover:border-blue-500 transition-all duration-200">Features</a>
+      <a href="#data-sources" class="text-gray-700 no-underline font-medium text-sm py-2 border-b-2 border-transparent hover:text-gray-900 hover:border-blue-500 transition-all duration-200">Data</a>
+      <a href="#examples" class="text-gray-700 no-underline font-medium text-sm py-2 border-b-2 border-transparent hover:text-gray-900 hover:border-blue-500 transition-all duration-200">Examples</a>
+    </nav>
+    
+    <div class="hidden md:flex gap-3 items-center">
+      <a href="https://github.com/hanafnafs/ng-simple-maps" 
+         class="px-4 py-2 rounded-md text-sm font-medium no-underline border border-gray-300 bg-transparent text-gray-700 hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 inline-flex items-center leading-none"
+         target="_blank" 
+         rel="noopener">
+        GitHub
+      </a>
+      <a href="https://www.npmjs.com/package/ng-simple-maps" 
+         class="px-4 py-2 rounded-md text-sm font-medium no-underline border border-blue-500 bg-blue-500 text-white hover:bg-blue-600 hover:border-blue-600 transition-all duration-200 inline-flex items-center leading-none"
+         target="_blank" 
+         rel="noopener">
+        Install
+      </a>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu Overlay -->
+  <div 
+    class="fixed top-16 left-0 right-0 bottom-0 bg-black bg-opacity-50 transition-all duration-200 z-40"
+    [class]="isMobileMenuOpen() ? 'opacity-100 visible' : 'opacity-0 invisible'"
+    (click)="closeMobileMenu()">
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div class="fixed top-16 w-72 h-screen bg-white border-l border-gray-200 transition-all duration-300 z-50"
+       [class]="isMobileMenuOpen() ? 'right-0' : '-right-72'">
+    <nav class="p-6 flex flex-col gap-4">
+      <a href="#features" class="text-gray-700 no-underline font-medium text-base py-3 border-b border-gray-100 hover:text-blue-500" (click)="closeMobileMenu()">Features</a>
+      <a href="#data-sources" class="text-gray-700 no-underline font-medium text-base py-3 border-b border-gray-100 hover:text-blue-500" (click)="closeMobileMenu()">Data Sources</a>
+      <a href="#examples" class="text-gray-700 no-underline font-medium text-base py-3 border-b border-gray-100 hover:text-blue-500" (click)="closeMobileMenu()">Examples</a>
+      <div class="flex flex-col gap-3 mt-6 pt-6 border-t border-gray-200">
+        <a href="https://github.com/hanafnafs/ng-simple-maps" 
+           class="px-3 py-1.5 rounded text-sm font-medium no-underline border border-gray-300 bg-transparent text-gray-700 hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 inline-flex items-center leading-none"
+           target="_blank" 
+           rel="noopener">
+          GitHub
+        </a>
+        <a href="https://www.npmjs.com/package/ng-simple-maps" 
+           class="px-3 py-1.5 rounded text-sm font-medium no-underline border border-blue-500 bg-blue-500 text-white hover:bg-blue-600 hover:border-blue-600 transition-all duration-200 inline-flex items-center leading-none"
+           target="_blank" 
+           rel="noopener">
+          Install
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>

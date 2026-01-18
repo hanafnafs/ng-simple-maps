@@ -1,0 +1,863 @@
+<div class="min-h-screen bg-gray-50 w-full">
+  <!-- Sidebar component -->
+  <app-sidebar></app-sidebar>
+  
+  <div class="lg:ml-80 pt-6 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div>
+        <!-- Page Header -->
+        <div class="py-8 mb-12 border-b border-gray-200">
+          <h1 class="text-4xl font-bold text-gray-900 mb-2">Documentation</h1>
+          <p class="text-lg text-gray-600">Complete guide to using ng-simple-maps in your Angular applications</p>
+        </div>
+        
+
+        <!-- Installation -->
+        <section id="installation" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Installation</h2>
+          <p class="text-gray-600 leading-relaxed mb-5">Install ng-simple-maps using npm:</p>
+          <app-code-example 
+            title="npm"
+            [code]="installCode">
+          </app-code-example>
+        </section>
+
+        <!-- Basic Usage -->
+        <section id="basic-usage" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Basic Usage</h2>
+          <p class="text-gray-600 leading-relaxed mb-5">Import the MapComponent and start creating maps:</p>
+          
+          <app-code-example 
+            title="component.ts"
+            [code]="basicImportCode">
+          </app-code-example>
+
+          <app-code-example 
+            title="component.html"
+            [code]="basicTemplateCode">
+          </app-code-example>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg flex flex-col items-center w-full max-w-full overflow-x-hidden">
+            <asm-map
+              [geography]="worldData"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              fill="#f1f5f9"
+              stroke="#64748b"
+              [strokeWidth]="0.5"
+              class="rounded-md overflow-hidden shadow-sm w-full h-auto max-w-4xl">
+            </asm-map>
+          </div>
+        </section>
+
+        <!-- Data Sources -->
+        <section id="data-sources" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Data Sources</h2>
+          <p>ng-simple-maps works with TopoJSON and GeoJSON data. Choose the right resolution for your needs:</p>
+          
+          <div class="my-5 overflow-x-auto w-full max-w-full">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Resolution</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">File Size</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Use Case</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">CDN URL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50">
+                  <td class="py-2 px-3 border-b border-gray-200 text-gray-700"><strong>110m</strong></td>
+                  <td class="py-2 px-3 border-b border-gray-200 text-gray-700">~13KB</td>
+                  <td class="py-2 px-3 border-b border-gray-200 text-gray-700">Mobile apps, fast loading</td>
+                  <td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">countries-110m.json</code></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="py-2 px-3 border-b border-gray-200 text-gray-700"><strong>50m</strong></td>
+                  <td class="py-2 px-3 border-b border-gray-200 text-gray-700">~23KB</td>
+                  <td class="py-2 px-3 border-b border-gray-200 text-gray-700">Web apps, recommended</td>
+                  <td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">countries-50m.json</code></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="py-2 px-3 border-b-0 text-gray-700"><strong>10m</strong></td>
+                  <td class="py-2 px-3 border-b-0 text-gray-700">~94KB</td>
+                  <td class="py-2 px-3 border-b-0 text-gray-700">High detail, desktop apps</td>
+                  <td class="py-2 px-3 border-b-0 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">countries-10m.json</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <app-code-example 
+            title="Using CDN URLs"
+            [code]="dataSourceCode">
+          </app-code-example>
+        </section>
+
+        <!-- Markers -->
+        <section id="markers" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Markers</h2>
+          <p>Add interactive markers to highlight cities, landmarks, or points of interest on your maps.</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [markers]="demoMarkers"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              fill="#fef7ed"
+              stroke="#ea580c"
+              [strokeWidth]="0.5"
+              markerColor="#dc2626"
+              [showTooltip]="true"
+              (markerClick)="onMarkerClick($event)">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Basic Markers"
+            [code]="markersBasicCode">
+          </app-code-example>
+
+          <h3>Marker Shapes & Custom Icons</h3>
+          <p>Use different shapes or custom SVG icons for your markers:</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [markers]="customMarkers"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              fill="#f8f9fa"
+              stroke="#dee2e6"
+              [strokeWidth]="0.5"
+              [showTooltip]="true">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Custom Markers"
+            [code]="markersCustomCode">
+          </app-code-example>
+
+          <h3>Advanced Marker Configuration</h3>
+          <p>Leverage deep customization options including custom SVGs, stroke styling, and data attachment:</p>
+          
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [markers]="advancedMarkers"
+              [width]="1000"
+              [height]="450"
+              projection="geoEqualEarth"
+              fill="#fefefe"
+              stroke="#a0a0a0"
+              [strokeWidth]="0.3"
+              [showTooltip]="true">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Advanced Marker Features"
+            [code]="advancedMarkersCode">
+          </app-code-example>
+
+          <h4 class="text-base font-semibold text-gray-800 my-4 mb-2 text-center">Marker Configuration Options</h4>
+          <div class="my-5 overflow-x-auto w-full max-w-full">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Property</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Type</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Description</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">coordinates</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">[number, number]</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Geographic coordinates [longitude, latitude]</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">required</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">label</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">string</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Marker tooltip label</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">undefined</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">color</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">string</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Fill color</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">component default</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">stroke</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">string</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Outline color</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">undefined</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">size</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">number</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Marker size in pixels</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">component default</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">shape</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">'circle' | 'diamond' | 'pin' | 'star' | 'custom'</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Marker shape</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">'circle'</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">customSvg</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">string</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">SVG path data or full markup</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">undefined</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">customSvgUrl</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">string</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">URL to external SVG file</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">undefined</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">customSvgSize</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">number</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">SVG viewBox size (auto-detected)</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">24</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b-0 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">data</code></td><td class="py-2 px-3 border-b-0 text-gray-700">Record&lt;string, unknown&gt;</td><td class="py-2 px-3 border-b-0 text-gray-700">Custom data for event handlers</td><td class="py-2 px-3 border-b-0 text-gray-700">undefined</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Annotations -->
+        <section id="annotations" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Annotations</h2>
+          <p>Add custom labels and callouts to provide additional context to your maps.</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [markers]="annotationMarkers"
+              [annotations]="annotations"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              fill="#fefcf3"
+              stroke="#a16207"
+              markerColor="#dc2626">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Annotations"
+            [code]="annotationsCode">
+          </app-code-example>
+        </section>
+
+        <!-- Lines & Connections -->
+        <section id="lines" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Lines & Connections</h2>
+          <p>Draw curved lines to show relationships, flight paths, or data flows between locations.</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [markers]="flightMarkers"
+              [lines]="flightPaths"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              fill="#f8fafc"
+              stroke="#64748b"
+              markerColor="#ef4444"
+              lineColor="#3b82f6">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Flight Paths"
+            [code]="linesCode">
+          </app-code-example>
+
+          <h3>Advanced Line Configuration</h3>
+          <p>Create complex network visualizations with different line styles, data attachment, and event handling:</p>
+          
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [markers]="networkMarkers"
+              [lines]="networkLines"
+              [width]="1000"
+              [height]="450"
+              projection="geoEqualEarth"
+              fill="#f1f5f9"
+              stroke="#cbd5e1"
+              markerColor="#10b981"
+              [showTooltip]="true">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Advanced Line Styling & Data"
+            [code]="advancedLinesCode">
+          </app-code-example>
+
+          <h4 class="text-base font-semibold text-gray-800 my-4 mb-2 text-center">Line Configuration Options</h4>
+          <div class="my-5 overflow-x-auto w-full max-w-full">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Property</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Type</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Description</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">from</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">[number, number]</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Starting coordinates [longitude, latitude]</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">required</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">to</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">[number, number]</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Ending coordinates [longitude, latitude]</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">required</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">color</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">string</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Line color</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">component default</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">strokeWidth</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">number</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Line thickness</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">component default</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">curve</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">number</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Curve amount (0=geodesic, positive=arc height)</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">0</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">dashed</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">boolean</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Draw as dashed line</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">false</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b-0 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">data</code></td><td class="py-2 px-3 border-b-0 text-gray-700">Record&lt;string, unknown&gt;</td><td class="py-2 px-3 border-b-0 text-gray-700">Custom data for event handlers</td><td class="py-2 px-3 border-b-0 text-gray-700">undefined</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Choropleth Maps -->
+        <section id="choropleth" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Choropleth Maps</h2>
+          <p>Visualize data by coloring countries based on values. Perfect for showing statistics, demographics, or any numeric data.</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [choroplethData]="populationData"
+              [choroplethConfig]="choroplethConfig"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              stroke="#374151"
+              [strokeWidth]="0.5"
+              [showTooltip]="true">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Choropleth Map"
+            [code]="choroplethCode">
+          </app-code-example>
+
+          <h3>Advanced Choropleth Configuration</h3>
+          <p>Create sophisticated data visualizations with custom color scales, value ranges, and multiple data types:</p>
+          
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <h4>GDP Data (Trillion USD)</h4>
+            <asm-map
+              [geography]="worldData"
+              [choroplethData]="gdpData"
+              [choroplethConfig]="customChoroplethConfig"
+              [width]="1000"
+              [height]="400"
+              projection="geoEqualEarth"
+              stroke="#666"
+              [strokeWidth]="0.3"
+              [showTooltip]="true">
+            </asm-map>
+          </div>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <h4>Temperature Data (°C Annual Average)</h4>
+            <asm-map
+              [geography]="worldData"
+              [choroplethData]="temperatureData"
+              [choroplethConfig]="temperatureChoroplethConfig"
+              [width]="1000"
+              [height]="400"
+              projection="geoEqualEarth"
+              stroke="#333"
+              [strokeWidth]="0.4"
+              [showTooltip]="true">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Advanced Choropleth Features"
+            [code]="advancedChoroplethCode">
+          </app-code-example>
+
+          <h4 class="text-base font-semibold text-gray-800 my-4 mb-2 text-center">Choropleth Configuration Options</h4>
+          <div class="my-5 overflow-x-auto w-full max-w-full">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Property</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Type</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Description</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">matchKey</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">string</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Property in geography to match against</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">'name'</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">colors</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">string[]</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Color scale from low to high values</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">blue scale</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">minValue</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">number</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Force minimum value for scale</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">auto-calculated</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b border-gray-200 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">maxValue</code></td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">number</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">Force maximum value for scale</td><td class="py-2 px-3 border-b border-gray-200 text-gray-700">auto-calculated</td></tr>
+                <tr class="hover:bg-gray-50"><td class="py-2 px-3 border-b-0 text-gray-700"><code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">nullColor</code></td><td class="py-2 px-3 border-b-0 text-gray-700">string</td><td class="py-2 px-3 border-b-0 text-gray-700">Color for missing data</td><td class="py-2 px-3 border-b-0 text-gray-700">'#ECECEC'</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Map Projections -->
+        <section id="projections" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Map Projections</h2>
+          <p>Choose from 15+ different projections to display the world in various ways.</p>
+          <br>
+          <div class="projections-showcase">
+            <div class="projection-item">
+              <h4>Equal Earth (Default)</h4>
+              <br>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoEqualEarth"
+                  fill="#e8f5e8"
+                  stroke="#2d5016">
+                </asm-map>
+              </div>
+            </div>
+            <br>
+            <div class="projection-item">
+              <h4>Orthographic (Globe)</h4>
+              <br>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoOrthographic"
+                  fill="#e6f3ff"
+                  stroke="#1e40af">
+                </asm-map>
+              </div>
+            </div>
+            <br>
+            <div class="projection-item">
+              <h4>Mercator</h4>
+              <br>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoMercator"
+                  fill="#fef3e2"
+                  stroke="#b45309">
+                </asm-map>
+              </div>
+            </div>
+            <br>
+            <div class="projection-item">
+              <h4>Natural Earth</h4>
+              <br>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoNaturalEarth1"
+                  fill="#f0f9ff"
+                  stroke="#0369a1">
+                </asm-map>
+              </div>
+            </div>
+          </div>
+
+          <app-code-example 
+            title="Different Projections"
+            [code]="projectionsCode">
+          </app-code-example>
+        </section>
+
+        <!-- Zoom & Pan -->
+        <section id="zoom-pan" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Zoom & Pan</h2>
+          <p>Enable interactive zoom and pan controls for detailed exploration.</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              fill="#ecfdf5"
+              stroke="#16a34a"
+              [zoomable]="true"
+              [showZoomControls]="true"
+              [minZoom]="1"
+              [maxZoom]="6">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Zoom & Pan"
+            [code]="zoomPanCode">
+          </app-code-example>
+        </section>
+
+        <!-- Click to Zoom -->
+        <section id="click-zoom" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Click to Zoom</h2>
+          <p>Click on any country to smoothly zoom in and center on it.</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              fill="#f5f5dc"
+              stroke="#556b2f"
+              hoverFill="#daa520"
+              [zoomable]="true"
+              [zoomOnClick]="true"
+              [zoomOnClickLevel]="4"
+              [zoomAnimationDuration]="1000"
+              [showTooltip]="true">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Click to Zoom"
+            [code]="clickZoomCode">
+          </app-code-example>
+        </section>
+
+        <!-- Country Labels -->
+        <section id="labels" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Country Labels</h2>
+          <p>Display country names directly on the map with smart zoom-based visibility.</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              fill="#e6f3ff"
+              stroke="#1e3a8a"
+              [zoomable]="true"
+              [showLabels]="true"
+              [labelMinZoom]="2"
+              [labelFontSize]="11"
+              [labelColor]="'#1e40af'"
+              [labelFontWeight]="'600'">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Country Labels"
+            [code]="labelsCode">
+          </app-code-example>
+        </section>
+
+        <!-- Graticule Grid Lines -->
+        <section id="graticule" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Grid Lines (Graticule)</h2>
+          <p>Add latitude and longitude grid lines for geographic reference.</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [width]="1000"
+              [height]="500"
+              projection="geoOrthographic"
+              fill="#87ceeb"
+              stroke="#4682b4"
+              [showGraticule]="true"
+              [graticuleConfig]="graticuleConfig"
+              [zoomable]="true">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Grid Lines"
+            [code]="graticuleCode">
+          </app-code-example>
+        </section>
+
+        <!-- Custom Styling -->
+        <section id="styling" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Custom Styling</h2>
+          <p>Customize colors, strokes, and visual appearance to match your design.</p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-4">Dark Theme</h4>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoEqualEarth"
+                  fill="#1f2937"
+                  stroke="#374151"
+                  [strokeWidth]="0.5">
+                </asm-map>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-4">Ocean Theme</h4>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoEqualEarth"
+                  fill="#0ea5e9"
+                  stroke="#0284c7"
+                  [strokeWidth]="1">
+                </asm-map>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-4">Earth Tones</h4>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoEqualEarth"
+                  fill="#d97706"
+                  stroke="#92400e"
+                  [strokeWidth]="0.8">
+                </asm-map>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-4">With Hover Effects</h4>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoEqualEarth"
+                  fill="#f3f4f6"
+                  stroke="#9ca3af"
+                  hoverFill="#6366f1"
+                  [strokeWidth]="0.5">
+                </asm-map>
+              </div>
+            </div>
+          </div>
+
+          <app-code-example 
+            title="Custom Styling"
+            [code]="stylingCode">
+          </app-code-example>
+        </section>
+
+        <!-- Tooltips -->
+        <section id="tooltips" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Tooltips</h2>
+          <p>Enable automatic tooltips on hover with custom styling options.</p>
+
+          <div class="my-6 p-6 border border-gray-200 rounded-lg">
+            <asm-map
+              [geography]="worldData"
+              [markers]="tooltipMarkers"
+              [width]="1000"
+              [height]="500"
+              projection="geoEqualEarth"
+              fill="#f8f9fa"
+              stroke="#dee2e6"
+              [strokeWidth]="0.5"
+              markerColor="#8b5cf6"
+              [showTooltip]="true"
+              [tooltipConfig]="tooltipConfig">
+            </asm-map>
+          </div>
+
+          <app-code-example 
+            title="Custom Tooltips"
+            [code]="tooltipsCode">
+          </app-code-example>
+
+          <h3>Advanced Tooltip Configuration</h3>
+          <p>Create sophisticated tooltip styling for different use cases and data types:</p>
+          
+          <app-code-example 
+            title="Advanced Tooltip Styling"
+            [code]="advancedTooltipCode">
+          </app-code-example>
+
+          <h4 class="text-lg font-semibold text-gray-900 mt-6 mb-4">Tooltip Configuration Options</h4>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Property</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Type</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Description</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50 transition-colors duration-150"><td class="border-b border-gray-200 p-3"><code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">backgroundColor</code></td><td class="border-b border-gray-200 p-3 text-gray-600">string</td><td class="border-b border-gray-200 p-3">Tooltip background color</td><td class="border-b border-gray-200 p-3 font-mono text-sm text-gray-600">'#fff'</td></tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-150"><td class="border-b border-gray-200 p-3"><code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">textColor</code></td><td class="border-b border-gray-200 p-3 text-gray-600">string</td><td class="border-b border-gray-200 p-3">Main text color</td><td class="border-b border-gray-200 p-3 font-mono text-sm text-gray-600">'#333'</td></tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-150"><td class="border-b border-gray-200 p-3"><code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">titleColor</code></td><td class="border-b border-gray-200 p-3 text-gray-600">string</td><td class="border-b border-gray-200 p-3">Title text color</td><td class="border-b border-gray-200 p-3 font-mono text-sm text-gray-600">textColor</td></tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-150"><td class="border-b border-gray-200 p-3"><code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">borderColor</code></td><td class="border-b border-gray-200 p-3 text-gray-600">string</td><td class="border-b border-gray-200 p-3">Border color</td><td class="border-b border-gray-200 p-3 font-mono text-sm text-gray-600">'#ccc'</td></tr>
+                <tr class="hover:bg-gray-50 transition-colors duration-150"><td class="p-3"><code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">borderRadius</code></td><td class="p-3 text-gray-600">number</td><td class="p-3">Corner radius in pixels</td><td class="p-3 font-mono text-sm text-gray-600">4</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Continent Filtering -->
+        <section id="continents" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Continent Filtering</h2>
+          <p>Display only specific continents or regions by filtering the geography data.</p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-4">Europe Only</h4>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoEqualEarth"
+                  fill="#fef3c7"
+                  stroke="#d97706"
+                  continents="Europe">
+                </asm-map>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-4">Asia Only</h4>
+              <div class="border border-gray-200 rounded-md p-4 bg-gray-50">
+                <asm-map
+                  [geography]="worldData"
+                  [width]="380"
+                  [height]="220"
+                  projection="geoEqualEarth"
+                  fill="#dcfce7"
+                  stroke="#16a34a"
+                  continents="Asia">
+                </asm-map>
+              </div>
+            </div>
+          </div>
+
+          <app-code-example 
+            title="Continent Filtering"
+            [code]="continentsCode">
+          </app-code-example>
+        </section>
+
+        <!-- API Reference -->
+        <section id="api-inputs" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Component Inputs</h2>
+          <p>Complete list of all available input properties for the MapComponent.</p>
+
+          <div class="my-5 overflow-x-auto w-full max-w-full">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Property</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Type</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Description</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50" *ngFor="let prop of mapInputs; let last = last">
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">
+                    <code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">{{ prop.name }}</code>
+                  </td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.type }}</td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.description }}</td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.default }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="api-outputs" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">Component Outputs</h2>
+          <p>Event outputs emitted by the MapComponent.</p>
+
+          <div class="my-5 overflow-x-auto w-full max-w-full">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Event</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Type</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50" *ngFor="let event of mapOutputs; let last = last">
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">
+                    <code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">({{ event.name }})</code>
+                  </td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ event.type }}</td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ event.description }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="api-interfaces" class="mb-16 w-full max-w-full overflow-x-hidden" style="scroll-margin-top: 30px;">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">TypeScript Interfaces</h2>
+          
+          <h3 class="text-xl font-semibold text-gray-900 mt-8 mb-4">MapMarker</h3>
+          <div class="my-5 overflow-x-auto w-full max-w-full">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Property</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Type</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Description</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50" *ngFor="let prop of markerInterface; let last = last">
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">
+                    <code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">{{ prop.name }}</code>
+                  </td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.type }}</td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.description }}</td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.default || '-' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="text-xl font-semibold text-gray-900 mt-8 mb-4">MapAnnotation</h3>
+          <div class="my-5 overflow-x-auto w-full max-w-full">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Property</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Type</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Description</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50" *ngFor="let prop of annotationInterface; let last = last">
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">
+                    <code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">{{ prop.name }}</code>
+                  </td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.type }}</td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.description }}</td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.default || '-' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="text-xl font-semibold text-gray-900 mt-8 mb-4">MapLine</h3>
+          <div class="my-5 overflow-x-auto w-full max-w-full">
+            <table class="w-full border-collapse text-sm rounded-lg overflow-hidden border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Property</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Type</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Description</th>
+                  <th class="bg-gray-50 border-b-2 border-gray-200 p-3 text-left font-semibold text-gray-700">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50" *ngFor="let prop of lineInterface; let last = last">
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">
+                    <code class="bg-gray-100 border border-gray-300 rounded px-1 text-red-600 font-mono text-xs">{{ prop.name }}</code>
+                  </td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.type }}</td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.description }}</td>
+                  <td [class]="last ? 'py-2 px-3 border-b-0 text-gray-700' : 'py-2 px-3 border-b border-gray-200 text-gray-700'">{{ prop.default || '-' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</div>

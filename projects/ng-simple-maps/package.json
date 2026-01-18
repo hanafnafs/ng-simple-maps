@@ -1,0 +1,73 @@
+{
+  "name": "ng-simple-maps",
+  "version": "0.0.1",
+  "description": "Beautiful, lightweight SVG world maps for Angular applications. Create interactive choropleth maps, markers, lines, and more with D3 geo projections. Perfect for data visualization, analytics dashboards, and geographic applications.",
+  "keywords": [
+    "angular",
+    "maps",
+    "world-map",
+    "svg-maps",
+    "d3",
+    "d3-geo",
+    "choropleth",
+    "data-visualization",
+    "interactive-maps",
+    "geography",
+    "topojson",
+    "geojson",
+    "projections",
+    "continents",
+    "countries",
+    "markers",
+    "angular-component",
+    "typescript",
+    "svg",
+    "visualization",
+    "dashboard",
+    "analytics",
+    "responsive",
+    "lightweight",
+    "customizable",
+    "globe",
+    "orthographic",
+    "mercator",
+    "equal-earth",
+    "natural-earth",
+    "zoom",
+    "pan",
+    "tooltips",
+    "annotations",
+    "lines",
+    "connections",
+    "flight-paths",
+    "data-mapping",
+    "geographic-data",
+    "map-library",
+    "angular-maps",
+    "ng"
+  ],
+  "author":{
+    "name": "Hanafnafs",
+    "email": "hanafnafs@gmail.com",
+    "url": "https://github.com/hanafnafs"
+  },
+  "license": "MIT",
+  "homepage": "https://ng-simple-maps.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hanafnafs/ng-simple-maps.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hanafnafs/ng-simple-maps/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "d3-geo": "^3.1.0",
+    "topojson-client": "^3.1.0"
+  },
+  "sideEffects": false
+}

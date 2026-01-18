@@ -1,0 +1,21 @@
+<div class="bg-gray-800 rounded-lg overflow-hidden my-4 max-h-96 flex flex-col w-full max-w-full">
+    <div class="flex justify-between items-center px-4 py-3 bg-gray-900 border-b border-gray-600 flex-shrink-0" *ngIf="showTitle && title">
+      <h4 class="text-sm font-semibold text-gray-100 m-0">{{ title }}</h4>
+      <button 
+        class="px-3 py-1 rounded text-xs font-medium cursor-pointer transition-all duration-200 border"
+        [class]="copied ? 'bg-green-600 border-green-500 text-white' : 'bg-gray-600 border-gray-500 text-gray-300 hover:bg-gray-500 hover:border-gray-400'"
+        (click)="copyCode()">
+        {{ copied ? 'Copied!' : 'Copy' }}
+      </button>
+    </div>
+    <div class="flex justify-between items-center px-4 py-3 bg-gray-900 border-b border-gray-600 flex-shrink-0" *ngIf="!title">
+      <div></div>
+      <button 
+        class="px-3 py-1 rounded text-xs font-medium cursor-pointer transition-all duration-200 border"
+        [class]="copied ? 'bg-green-600 border-green-500 text-white' : 'bg-gray-600 border-gray-500 text-gray-300 hover:bg-gray-500 hover:border-gray-400'"
+        (click)="copyCode()">
+        {{ copied ? 'Copied!' : 'Copy' }}
+      </button>
+    </div>
+    <pre class="p-4 m-0 overflow-auto font-mono text-xs leading-relaxed text-gray-200 bg-transparent flex-1 min-h-0 w-full max-w-full whitespace-pre-wrap break-words"><code [innerHTML]="formattedCode"></code></pre>
+  </div>
