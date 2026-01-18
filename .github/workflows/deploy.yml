@@ -37,13 +37,16 @@ jobs:
     - name: Build application  
       run: npm run build:app -- --base-href="/ng-simple-maps/"
 
+    - name: List dist directory
+      run: find dist -type f -name "*.html" | head -10
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: './dist/angular-simple-maps'
+        path: './dist/angular-simple-maps/browser'
 
   deploy:
     environment:
